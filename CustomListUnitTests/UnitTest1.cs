@@ -155,7 +155,7 @@ namespace CustomListTests
         {
             // arrange
             CustomList<int> test = new CustomList<int>();
-            string expected = "4 6";
+            string expected = "4,6";
             string actual;
             // act
             test.Add(4);
@@ -169,7 +169,7 @@ namespace CustomListTests
         {
             // arrange
             CustomList<string> test = new CustomList<string>();
-            string expected = "turtle turkey";
+            string expected = "turtle,turkey";
             string actual;
             // act
             test.Add("turtle");
@@ -225,7 +225,7 @@ namespace CustomListTests
             CustomList<int> test2 = new CustomList<int>();
             int expected = 6;
             // act
-]           test1.Add(1);
+            test1.Add(1);
             test1.Add(3);
             test1.Add(5);
             test2.Add(2);
@@ -244,7 +244,7 @@ namespace CustomListTests
             CustomList<int> test2 = new CustomList<int>();
             int expected = 2;
             // act
-]           test1.Add(1);
+            test1.Add(1);
             test1.Add(3);
             test1.Add(5);
             test2.Add(2);
@@ -276,7 +276,7 @@ namespace CustomListTests
             CustomList<int> test2 = new CustomList<int>();
             int expected = 6;
             // act
-]           test1.Add(1);
+            test1.Add(1);
             test1.Add(3);
             test1.Add(5);
             test1.Add(7);
@@ -290,6 +290,73 @@ namespace CustomListTests
             test2.Add(12);
             CustomList<int> result = test1 + test2;
             int actual = result[8];
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Overload_ZipTwoListsTogether_CheckSecondIndexIsFromSecondList()
+        {
+            // arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 2;
+            // act
+            test1.Add(1);
+            test1.Add(3);
+            test1.Add(5);
+            test2.Add(2);
+            test2.Add(4);
+            test2.Add(6);
+            CustomList<int> result = test1 + test2;
+            int actual = result[1];
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Overload_ZipTwoListsTogether_CheckNoIndexesAreDropped()
+        {
+            // arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 6;
+            // act
+            test1.Add(1);
+            test1.Add(3);
+            test1.Add(5);
+            test2.Add(2);
+            test2.Add(4);
+            test2.Add(6);
+            CustomList<int> result = test1 + test2;
+            int actual = result[5];
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Overload_ZipTwoListsTogether_EmptyListAndPopulatedListStillKeepProperOrder()
+        {
+            // arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 5;
+            // act
+            test1.Add(1);
+            test1.Add(3);
+            test1.Add(5);
+            CustomList<int> result = test1 + test2;
+            int actual = result[2];
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Overload_ZipTwoListsTogether_TwoEmptyListsDontThrowError()
+        {
+            // arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 0;
+            // act
+            CustomList<int> result = test1 + test2;
+            int actual = result.Count;
             // assert
             Assert.AreEqual(expected, actual);
         }

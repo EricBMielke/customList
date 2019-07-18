@@ -88,11 +88,23 @@ namespace CustomList
                 newString.Append(samplePopulatedList[i]);
                 if (i != (Count - 1))
                 {
-                    newString.Append(" ");
+                    newString.Append(",");
                 }
             }
             return newString.ToString();
         }
-
+        public static CustomList<T> operator + (CustomList<T> list1, CustomList<T> list2)
+        {
+            CustomList<T> addedList = new CustomList<T>();
+            for (int i = 0; i < list1.Count; i++)
+            {
+                addedList.Add(list1[i]);
+            }
+            for (int i = 0; i < list2.Count; i++)
+            {
+                addedList.Add(list2[i]);
+            }
+            return addedList;
+        }
     }
 }
