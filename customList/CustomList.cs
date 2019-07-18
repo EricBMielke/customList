@@ -82,7 +82,16 @@ namespace CustomList
         }
         public override string ToString()
         {
-            return "Current List: " + samplePopulatedList;
+            StringBuilder newString = new StringBuilder();
+            for (int i = 0; i < Count; i++)
+            {
+                newString.Append(samplePopulatedList[i]);
+                if (i != (Count - 1))
+                {
+                    newString.Append(" ");
+                }
+            }
+            return newString.ToString();
         }
     }
 }

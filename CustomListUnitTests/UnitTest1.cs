@@ -155,7 +155,7 @@ namespace CustomListTests
         {
             // arrange
             CustomList<int> test = new CustomList<int>();
-            string expected = "4,6";
+            string expected = "4 6";
             string actual;
             // act
             test.Add(4);
@@ -169,7 +169,7 @@ namespace CustomListTests
         {
             // arrange
             CustomList<string> test = new CustomList<string>();
-            string expected = "turtle,turkey";
+            string expected = "turtle turkey";
             string actual;
             // act
             test.Add("turtle");
