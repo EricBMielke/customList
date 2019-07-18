@@ -73,15 +73,15 @@ namespace CustomListTests
         {
             // arrange
             CustomList<int> test = new CustomList<int>();
-            int expected = 18;
+            int expected = 8;
             int actual;
             // act
-            test.Add(8);
             test.Add(10);
+            test.Add(8);
             test.Remove(10);
-            actual = test.Contains(10);
+            actual = test[0];
             // assert
-
+            Assert.AreEqual(expected, actual);
         }
         // if i remove a specific value(that occupies more than one index), the first value will not be part of the list
         [TestMethod]
@@ -89,12 +89,16 @@ namespace CustomListTests
         {
             // arrange
             CustomList<int> test = new CustomList<int>();
-            int expected = 18;
+            int expected = 10;
             int actual;
             // act
-
+            test.Add(10);
+            test.Add(10);
+            test.Add(8);
+            test.Remove(10);
+            actual = test[0];
             // assert
-
+            Assert.AreEqual(expected, actual);
         }
 
         // if i remove a specific value, the size of the list will reduce by one
@@ -103,12 +107,15 @@ namespace CustomListTests
         {
             // arrange
             CustomList<int> test = new CustomList<int>();
-            int expected = 18;
+            int expected = 8;
             int actual;
             // act
-
+            test.Add(10);
+            test.Add(8);
+            test.Remove(10);
+            actual = test[0];
             // assert
-
+            Assert.AreEqual(expected, actual);
         }
         // if i remove a specific value that doesn't exist, the list will remain the same size
         [TestMethod]
@@ -116,12 +123,18 @@ namespace CustomListTests
         {
             // arrange
             CustomList<int> test = new CustomList<int>();
-            int expected = 18;
+            int expected = 12;
             int actual;
             // act
-    
+            test.Add(12);
+            test.Add(12);
+            test.Add(12);
+            test.Add(12);
+            test.Add(12);
+            test.Remove(10);
+            actual = test[4];
             // assert
-
+            Assert.AreEqual(expected, actual);
         }
         // if i remove a specific value of an empty list, an error is not thrown
         [TestMethod]
@@ -129,12 +142,13 @@ namespace CustomListTests
         {
             // arrange
             CustomList<int> test = new CustomList<int>();
-            int expected = 18;
+            int expected = 0;
             int actual;
             // act
-
+            test.Remove(10);
+            actual = test.Count;
             // assert
-
+            Assert.AreEqual(expected, actual);
         }
     }
 }

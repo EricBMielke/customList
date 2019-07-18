@@ -36,7 +36,7 @@ namespace CustomList
             if (Count == Capacity)
             {
                 T[] newSampleList = new T[Capacity + 1];
-                    for (int i = 0; i < samplePopulatedList.Length; i++)
+                    for (int i = 0; i < Count; i++)
                     {
                         newSampleList[i] = samplePopulatedList[i];
                     }
@@ -44,6 +44,10 @@ namespace CustomList
             }
             samplePopulatedList[Count] = itemToAdd;
             Count++;
+        }
+        public override string ToString()
+        {
+            return "Current List: " + samplePopulatedList;
         }
     }
 }
