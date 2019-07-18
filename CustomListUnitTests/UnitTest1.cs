@@ -217,5 +217,81 @@ namespace CustomListTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void Overload_AddTwoCustomLists_IndexReflectsBothListsAdded()
+        {
+            // arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 6;
+            // act
+]           test1.Add(1);
+            test1.Add(3);
+            test1.Add(5);
+            test2.Add(2);
+            test2.Add(4);
+            test2.Add(6);
+            CustomList<int> result = test1 + test2;
+            int actual = result[5];
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Overload_AddTwoCustomLists_IndexesAreAddedInTheProperOrder()
+        {
+            // arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 2;
+            // act
+]           test1.Add(1);
+            test1.Add(3);
+            test1.Add(5);
+            test2.Add(2);
+            test2.Add(4);
+            test2.Add(6);
+            CustomList<int> result = test1 + test2;
+            int actual = result[3];
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Overload_AddTwoCustomLists_TwoEmptyListsCreateNewEmptyList()
+        {
+            // arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 0;
+            // act
+            CustomList<int> result = test1 + test2;
+            int actual = result.Count;
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Overload_AddTwoCustomLists_TwoListsTogetherGoBeyondCapacityAndNewListUpdatesCapacity()
+        {
+            // arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 6;
+            // act
+]           test1.Add(1);
+            test1.Add(3);
+            test1.Add(5);
+            test1.Add(7);
+            test1.Add(9);
+            test1.Add(11);
+            test2.Add(2);
+            test2.Add(4);
+            test2.Add(6);
+            test2.Add(8);
+            test2.Add(10);
+            test2.Add(12);
+            CustomList<int> result = test1 + test2;
+            int actual = result[8];
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
