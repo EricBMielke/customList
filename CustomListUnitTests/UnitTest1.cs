@@ -150,5 +150,72 @@ namespace CustomListTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void Override_MultipleIntToString_IntsInOneString()
+        {
+            // arrange
+            CustomList<int> test = new CustomList<int>();
+            string expected = "4,6";
+            string actual;
+            // act
+            test.Add(4);
+            test.Add(6);
+            actual = test.ToString();
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Override_MultipleStringsToString_StringsInOneString()
+        {
+            // arrange
+            CustomList<string> test = new CustomList<string>();
+            string expected = "turtle,turkey";
+            string actual;
+            // act
+            test.Add("turtle");
+            test.Add("turkey");
+            actual = test.ToString();
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Override_IntToString_IntBecomesString()
+        {
+            // arrange
+            CustomList<int> test = new CustomList<int>();
+            string expected = "10";
+            string actual;
+            // act
+            test.Add(10);
+            actual = test.ToString();
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Override_DoubleToString_DoubleBecomesString()
+        {
+            // arrange
+            CustomList<double> test = new CustomList<double>();
+            string expected = "10.22";
+            string actual;
+            // act
+            test.Add(10.22);
+            actual = test.ToString();
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Override_StringToString_StringStaysString()
+        {
+            // arrange
+            CustomList<string> test = new CustomList<string>();
+            string expected = "JohnnyBravo";
+            string actual;
+            // act
+            test.Add("JohnnyBravo");
+            actual = test.ToString();
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
