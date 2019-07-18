@@ -41,9 +41,44 @@ namespace CustomList
                         newSampleList[i] = samplePopulatedList[i];
                     }
                 samplePopulatedList = newSampleList;
+                Capacity++;
             }
             samplePopulatedList[Count] = itemToAdd;
             Count++;
+        }
+        public void Remove(T valueToRemove)
+        {
+            if (Find(valueToRemove) >= 0)
+            {
+                int indexToRemove = Find(valueToRemove);
+
+                T[] newTemporaryList = new T[Capacity];
+                int j = 0;
+                for (int i = 0; i < Count; i++, j++)
+                {
+                    if (i != indexToRemove)
+                    {
+                        newTemporaryList[j] = samplePopulatedList[i];
+                    }
+                    else
+                    { 
+                        j--;
+                    }
+                }
+                samplePopulatedList = newTemporaryList;
+                Count--;
+            }
+        }
+        public int Find(T valueToFind)
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                if (samplePopulatedList[i].Equals(valueToFind))
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
         public override string ToString()
         {
