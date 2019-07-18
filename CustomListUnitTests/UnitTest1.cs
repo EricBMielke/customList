@@ -294,7 +294,7 @@ namespace CustomListTests
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void Overload_ZipTwoListsTogether_CheckSecondIndexIsFromSecondList()
+        public void Overload_ZipTwoListsTogether_CheckFirstIndexIsFromSecondList()
         {
             // arrange
             CustomList<int> test1 = new CustomList<int>();
@@ -307,7 +307,7 @@ namespace CustomListTests
             test2.Add(2);
             test2.Add(4);
             test2.Add(6);
-            CustomList<int> result = test1 + test2;
+            CustomList<int> result = test1.Zip(test2);
             int actual = result[1];
             // assert
             Assert.AreEqual(expected, actual);
@@ -326,7 +326,7 @@ namespace CustomListTests
             test2.Add(2);
             test2.Add(4);
             test2.Add(6);
-            CustomList<int> result = test1 + test2;
+            CustomList<int> result = test1.Zip(test2);
             int actual = result[5];
             // assert
             Assert.AreEqual(expected, actual);
@@ -342,7 +342,7 @@ namespace CustomListTests
             test1.Add(1);
             test1.Add(3);
             test1.Add(5);
-            CustomList<int> result = test1 + test2;
+            CustomList<int> result = test1.Zip(test2);
             int actual = result[2];
             // assert
             Assert.AreEqual(expected, actual);
@@ -355,8 +355,45 @@ namespace CustomListTests
             CustomList<int> test2 = new CustomList<int>();
             int expected = 0;
             // act
-            CustomList<int> result = test1 + test2;
+            CustomList<int> result = test1.Zip(test2);
             int actual = result.Count;
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Overload_ZipTwoListsTogether_TwoListsDifferentSizeKeepOrder()
+        {
+            // arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 3;
+            // act
+            test1.Add(1);
+            test1.Add(3);
+            test1.Add(5);
+            test2.Add(2);
+            CustomList<int> result = test1.Zip(test2);
+            int actual = result[2];
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Overload_ZipTwoListsTogether_TwoListsDifferentSizeKeepOrderOtherVariation()
+        {
+            // arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 6;
+            // act
+            test1.Add(1);
+            test1.Add(3);
+            test1.Add(5);
+            test2.Add(2);
+            test2.Add(4);
+            test2.Add(6);
+            test2.Add(8);
+            CustomList<int> result = test1.Zip(test2);
+            int actual = result[5];
             // assert
             Assert.AreEqual(expected, actual);
         }
