@@ -403,7 +403,7 @@ namespace CustomListTests
             //arrange
             CustomList<int> test1 = new CustomList<int>();
             CustomList<int> test2 = new CustomList<int>();
-            int expected = 2;
+            int expected = 1;
             //act
             test1.Add(1);
             test1.Add(3);
@@ -453,7 +453,7 @@ namespace CustomListTests
             //arrange
             CustomList<int> test1 = new CustomList<int>();
             CustomList<int> test2 = new CustomList<int>();
-            int expected = 7;
+            int expected = 0;
             //act
             test1.Add(1);
             test1.Add(3);
@@ -463,7 +463,7 @@ namespace CustomListTests
             test2.Add(7);
             test2.Add(5);
             CustomList<int> result = test1 - test2;
-            int actual = result[0];
+            int actual = result.Count;
             //assert
             Assert.AreEqual(expected, actual);
         }
