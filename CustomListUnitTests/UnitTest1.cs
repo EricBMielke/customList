@@ -397,5 +397,75 @@ namespace CustomListTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void Overload_SubtractLists_CountIsUpdatedOnNewList()
+        {
+            //arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 2;
+            //act
+            test1.Add(1);
+            test1.Add(3);
+            test2.Add(1);
+            test2.Add(4);
+            CustomList<int> result = test1 - test2;
+            int actual = result.Count;
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Overload_SubtractLists_RemovedValueDoesNotExistInNewList()
+        {
+            //arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 3;
+            //act
+            test1.Add(1);
+            test1.Add(3);
+            test2.Add(1);
+            test2.Add(4);
+            CustomList<int> result = test1 - test2;
+            int actual = result[0];
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Overload_SubtractLists_EmptyListDoesNotDoAnything()
+        {
+            //arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 5;
+            //act
+            test1.Add(1);
+            test1.Add(3);
+            test1.Add(5);
+            CustomList<int> result = test1 - test2;
+            int actual = result[2];
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Overload_SubtractLists_DifferentSizedListsWork()
+        {
+            //arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 7;
+            //act
+            test1.Add(1);
+            test1.Add(3);
+            test1.Add(5);
+            test2.Add(1);
+            test2.Add(3);
+            test2.Add(7);
+            test2.Add(5);
+            CustomList<int> result = test1 - test2;
+            int actual = result[0];
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
