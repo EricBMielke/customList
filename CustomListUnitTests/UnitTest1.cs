@@ -553,5 +553,23 @@ namespace CustomListTests
             //assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void Sort_LoopingOverEachElementInArray_StringsAreCorrectlySorted()
+        {
+            //arrange
+            CustomList<string> test1 = new CustomList<string>();
+            string expected = "John";
+
+            //act
+            test1.Add("Matthew");
+            test1.Add("John");
+            test1.Add("Abe");
+            test1.Add("Gabe");
+            test1.Add("Eric");
+            test1.Sort();
+            string actual = test1[4];
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
