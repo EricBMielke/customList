@@ -106,5 +106,38 @@ namespace CustomList
             }
             return addedList;
         }
+        public CustomList<T> Zip(CustomList<T> list1)
+        {
+            CustomList<T> zippedList = new CustomList<T>();
+            int smallerArray = 0;
+            if (list1.Count >= Count)
+            {
+                smallerArray = Count;
+            }
+            else
+            {
+                smallerArray = list1.Count;
+            }
+            for (int i = 0; i < smallerArray; i++)
+            {
+                zippedList.Add(samplePopulatedList[i]);
+                zippedList.Add(list1[i]);
+            }
+            if (list1.Count >= Count)
+            {
+                for (int i = Count; i < list1.Count; i++)
+                {
+                    zippedList.Add(list1[i]);
+                }
+            }
+            else
+            {
+                for (int i = list1.Count; i < Count; i++)
+                {
+                    zippedList.Add(samplePopulatedList[i]);
+                }
+            }
+            return zippedList;
+        }
     }
 }
