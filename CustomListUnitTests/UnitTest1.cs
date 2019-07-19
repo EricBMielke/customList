@@ -424,8 +424,10 @@ namespace CustomListTests
             //act
             test1.Add(1);
             test1.Add(3);
+            test1.Add(5);
+            test2.Add(2);
             test2.Add(1);
-            test2.Add(4);
+            test2.Add(6);
             CustomList<int> result = test1 - test2;
             int actual = result[0];
             //assert

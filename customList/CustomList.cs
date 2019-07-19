@@ -139,5 +139,19 @@ namespace CustomList
             }
             return zippedList;
         }
+        public static CustomList<T> operator - (CustomList<T> list1, CustomList<T> list2)
+        {
+            CustomList<T> addedList = new CustomList<T>();
+            addedList = list1;
+            for (int i = 0; i < list1.Count; i++)
+            {
+                for (int j = 0; j < list2.Count; j++)
+                    if (list1[i].Equals(list2[j]))
+                    {
+                        addedList.Remove(list1[i]);
+                    }
+            }
+            return addedList;
+        }
     }
 }
