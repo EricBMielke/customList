@@ -489,5 +489,69 @@ namespace CustomListTests
             //assert
             Assert.AreEqual(expected, actual);
         }
+    
+        [TestMethod]
+        public void Iterations_LoopingOverEachElementInArray_MultipleListsWillAddUpToCorrectSum()
+        {   
+            //arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 18;
+            int sum = 0;
+
+            //act
+            test1.Add(1);   
+            test1.Add(3);
+            test1.Add(5);
+            test2.Add(1);
+            test2.Add(3);
+            test2.Add(5);
+            CustomList<int> result = test1 + test2;
+            foreach (int el in result)
+            {
+            sum += el;
+            }
+            int actual = sum;
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Sort_LoopingOverEachElementInArray_TheyAreCorrectlySortedToHaveTheSmallestIntFirst()
+        {
+            //arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 1;
+
+            //act
+            test1.Add(5);
+            test1.Add(5);
+            test1.Add(5);
+            test1.Add(1);
+            test1.Add(5);
+            test1.Sort();
+            int actual = test1[0];
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Sort_LoopingOverEachElementInArray_TheyAreCorrectlySortedToHaveTheLargesttIntFirst()
+        {
+            //arrange
+            CustomList<int> test1 = new CustomList<int>();
+            CustomList<int> test2 = new CustomList<int>();
+            int expected = 5;
+
+            //act
+            test1.Add(5);
+            test1.Add(5);
+            test1.Add(5);
+            test1.Add(1);
+            test1.Add(2);
+            test1.Sort();
+            int actual = test1[4];
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
