@@ -469,5 +469,25 @@ namespace CustomListTests
             //assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void Iterations_LoopingOverEachElementInArray_NumbersWillAddUpToCorrectSum()
+        {
+            //arrange
+            CustomList<int> test1 = new CustomList<int>();
+            int expected = 9;
+            int sum = 0;
+      
+            //act
+            test1.Add(1);
+            test1.Add(3);
+            test1.Add(5);
+            foreach(int el in test1)
+            {
+                sum += el;
+            }
+            int actual = sum;
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
