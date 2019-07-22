@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    public class CustomList<T> : IEnumerable
+    public class CustomList<T> : IEnumerable //,IComparable
     {
         public IEnumerator GetEnumerator()
         {
@@ -16,6 +16,12 @@ namespace CustomList
                 yield return samplePopulatedList[i];
             }
         }
+        //int IComparable.CompareTo(object obj)
+        //{
+        //    CustomList<int> c = (CustomList<int>)obj;
+        //    return obj.CompareTo(this.obj);
+
+        //}
         private T[] samplePopulatedList;
         public T this[int i]
         {
@@ -161,5 +167,24 @@ namespace CustomList
             }
             return addedList;
         }
+        //public void Sort()
+        //{
+        //    T temp;
+        //    for (int i = 0; i < samplePopulatedList.Length - 1; i++)
+
+        //        for (int j = i + 1; j < samplePopulatedList.Length; j++)
+
+        //            if ((samplePopulatedList[i]< samplePopulatedList[j]))
+        //            {
+        //               temp = samplePopulatedList[i];
+        //               samplePopulatedList[i] = samplePopulatedList[j];
+        //               samplePopulatedList[j] = temp;
+        //            }
+
+        //        foreach (T value in samplePopulatedList)
+        //        {
+        //            Console.Write(value + " ");
+        //        }
+        //}
     }
 }
